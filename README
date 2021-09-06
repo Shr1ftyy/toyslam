@@ -1,3 +1,17 @@
 A toy implementation of monocular ORBSlam written in python.
-
 I got bored one day lmao
+
+How to SLAM:
+The instructions outlined here will be with reference to the information provided by
+Hartley and Zisserman in 'Multiple View Geometry in computer vision' (Chapter 10 provides
+a more in-depth explanation on the Reconsutction of a 3D scene given 2D images)
+ - Find pixel correspondences between both sequentially adjacent images using
+ ORB and KNN.
+ - Compute the epipolar plane and line formed by the two images given corresponding keypoints
+ - Given the above parameters, compute the Fundamental Matrix F or Essential Matrix E.
+ - Compute the Camera matrix P' given the initial camera matrix P and the chosen matrix from
+ the step above.
+ - Triangulate points in 3D 
+ - Reset camera matrix - change position of the camera in space based on the information found
+ from the previous steps.
+ - Repeat
